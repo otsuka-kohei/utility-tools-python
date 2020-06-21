@@ -1,5 +1,4 @@
 # python3
-# recommended to use on Windows because UNIX cannot get file create time
 
 import sys
 import os
@@ -24,8 +23,7 @@ def main():
 
     file_paths = glob.glob(path + "*" + keyword + "*")
     for file_path in file_paths:
-        # Only Windows can read ctime properly
-        time = os.path.getctime(file_path)
+        time = os.path.getmtime(file_path)
         time = datetime.datetime.fromtimestamp(time)
         time = time.strftime("%Y%m%d_%H%M%S")
 
